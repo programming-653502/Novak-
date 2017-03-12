@@ -4,8 +4,8 @@
 #define NAME_SIZE 20
 using namespace std;
 	struct Bank {
-		double cash;// сумма котор положили на счет
-		char name[NAME_SIZE];// имя банка
+		double cash;// Г±ГіГ¬Г¬Г  ГЄГ®ГІГ®Г° ГЇГ®Г«Г®Г¦ГЁГ«ГЁ Г­Г  Г±Г·ГҐГІ
+		char name[NAME_SIZE];// ГЁГ¬Гї ГЎГ Г­ГЄГ 
 		double dopcash;
 		double percent[SIZE];
 		
@@ -122,7 +122,7 @@ using namespace std;
 		}
 		case 6: {
 			cout << "Belarusbank"<<endl<< "Adress: 220089, Minsk, Dzerzhinski ave, 18, Republic of Belarus" ;
-			cout<<endl<<"Tel.: +375 17 2893814" <<endl<<"E-mail: info@belarusbank.by ";
+			cout<<endl<<"Tel.: +375 17 2893814" <<endl<<"E-mail: info@belarusbank.byВ ";
 			break;
 		}
 		case 7: {
