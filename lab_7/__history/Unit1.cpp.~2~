@@ -1,0 +1,98 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#include <list>
+#include <iostream>
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "Student.h"
+using namespace std;
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+list<Student> students;
+const double minimumWage = 400.0;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+	 int result = Student::addStudent();
+	 if (result) {
+		AnsiString studentName = Form1->Edit1->Text;
+		AnsiString studentGroupNumber = Form1->ComboBox1->Text.c_str();
+		double studentScore= StrToFloat(Form1->Edit2->Text);
+		double studentIncome= StrToFloat(Form1->Edit3->Text);
+		Student st;
+		st.fullName = studentName;
+		st.groupNumber = studentGroupNumber;
+		st.averageScore = studentScore;
+		st.income = studentIncome;
+		if (studentIncome > minimumWage) {
+			st.priority = 1;
+		}
+		else
+			st.priority = 0;
+		students.push_back(st);
+	 }
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+	ComboBox1->Items->Add("653503");
+	ComboBox1->Items->Add("210501");
+	ComboBox1->Items->Add("653501");
+	ComboBox1->Items->Add("653502");
+	ComboBox1->Items->Add("653504");
+	ComboBox1->Items->Add("653505");
+	ComboBox1->Items->Add("353503");
+	ComboBox1->Items->Add("270401");
+	ComboBox1->Items->Add("305503");
+	ComboBox1->Items->Add("402101");
+	ComboBox1->Items->Add("470378");
+	ComboBox1->Sorted = 1;
+
+
+
+
+   /*	AnsiString studentName;
+	AnsiString studentGroupNumber;
+	double studentScore;
+	double studentIncome;
+	try
+	{
+		TStringList *list = new TStringList();
+		list->LoadFromFile("Students information.txt");
+		int amount = list->Count;
+		for (int i = 1; i < amount; i++) {
+			 studentName = list->Strings[i];
+			 i++;
+
+		}
+	}
+	catch(...)
+	{
+		ShowMessage("Τΰιλ «Students information.txt» νε νΰιδεν!");
+	}    */
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+	try
+	{
+		TStringList *list = new TStringList();
+		list->LoadFromFile("Students information.txt");
+		Memo1->Clear();
+		Memo1->Text = list->Text;
+	}
+	catch(...)
+	{
+		ShowMessage("Τΰιλ «Students information.txt» νε νΰιδεν!");
+	}
+}
+//---------------------------------------------------------------------------

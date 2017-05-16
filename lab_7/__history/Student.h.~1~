@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------------
+
+#ifndef StudentH
+#define StudentH
+#include <vcl.h>
+class Student
+{
+public:
+	Student();
+	Student(AnsiString fullName, int groupNumber, double averageScore, double income);
+	AnsiString fullName;
+	int groupNumber;
+	double averageScore;
+	double income;
+	int priority;
+	const double minimumWage = 400.0;
+	void addStudent();
+	static void viewFile();
+	static int getAmount();
+};
+//---------------------------------------------------------------------------
+#endif
